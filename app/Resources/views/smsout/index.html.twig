@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Smsouts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sendto</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sMSOut in sMSOuts %}
+            <tr>
+                <td><a href="{{ path('smsout_show', { 'id': sMSOut.id }) }}">{{ sMSOut.id }}</a></td>
+                <td>{{ sMSOut.sendTo }}</td>
+                <td>{{ sMSOut.message }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('smsout_show', { 'id': sMSOut.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('smsout_edit', { 'id': sMSOut.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('smsout_new') }}">Create a new sMSOut</a>
+        </li>
+    </ul>
+{% endblock %}
